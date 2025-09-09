@@ -1,79 +1,40 @@
-🚀 JavaScript Toy Problems
+# 🚀 Moringa Week 1 Code Challenge
 
-This repo contains simple but powerful JavaScript projects designed to sharpen problem-solving skills and strengthen core programming concepts. Each challenge includes HTML + CSS + JS for a complete, interactive experience.
+## 📌 Description
+This repository contains solutions to the **Week 1 JavaScript challenges** at Moringa.  
+The projects are simple web-based toy problems that practice core JavaScript concepts:
 
-📌 Projects Included
-1. 🎓 Student Grade Generator
+1. **Student Grade Generator** → Calculates student grades based on marks.  
+2. **Speed Detector** → Detects overspeeding and assigns demerit points.  
+3. **Net Salary Calculator** → Computes gross salary, deductions (PAYE, SHIF, NSSF), and net salary.
 
-Description: Prompts the user to enter student marks (0–100) and outputs the corresponding grade.
+Each project includes HTML, CSS, and JavaScript for a functional and interactive UI.
 
-Logic:
+---
 
-A: > 79
+## ⚙️ Project Setup
+To run the project locally:
 
-B: 60–79
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/Jeremiah-tech-dev/Moringa-week-1-code-challenge.git
 
-C: 49–59
+   Navigate to the project folder:
 
-D: 40–49
-
-E: < 40
-
-2. 🚦 Speed Detector
-
-Description: Checks the speed of a car and calculates demerit points.
-
-Rules:
-
-Speed < 70 → Ok
-
-Every 5 km/s above 70 → 1 demerit point
-
-If points > 12 → License suspended
-
-3. 💰 Net Salary Calculator
-
-Description: Calculates an employee’s Net Salary from inputs of basic salary and benefits.
-
-Features:
-
-Computes Gross Salary
-
-Deducts PAYE (Tax) using KRA 2025 rates
-
-Deducts SHIF (2.75% of gross)
-
-Deducts NSSF (Tier I & II contributions)
-
-Deducts Housing Levy (1.5% of gross)
-
-Outputs Net Salary
-
-🛠️ Tech Stack
-
-HTML5 → structure
-
-CSS3 → internal styling + gradients for modern UI
-
-JavaScript (ES6) → core logic
-
-📂 Project Structure
-├── grade-generator.html
-├── speed-detector.html
-├── net-salary-calculator.html
-└── README.md
-
-🚀 How to Run
-
-Clone the repo:
-
-git clone https://github.com/YOUR-USERNAME/YOUR-REPO-NAME.git
+cd Moringa-week-1-code-challenge
 
 
-Open any .html file in your browser.
+Open any of the .html files (e.g. Grade.html, Speed.html, Net Salary.html) in your browser.
 
-Interact with the inputs and enjoy! 🎉
+That’s it 🎉
 
-🤝 Contributing
+👨‍💻 Author
 
-Pull requests are welcome! If you’d like to improve UI, optimize logic, or add new challenges, feel free to fork and PR.
+Jeremiah-tech-dev
+
+GitHub: Jeremiah-tech-dev
+
+📜 License
+
+This project is licensed under the MIT License.
+You are free to use, modify, and distribute this project as you wish.
