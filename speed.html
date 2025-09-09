@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speed Detector</title>
+    <!--The following is the ccs-->
+    <style>
+         body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, red, blue);
+    }
+    .container {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+      text-align: center;
+      width: 350px;
+      background: linear-gradient(to right, blue,red);
+    }
+    h1 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: whitesmoke;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 0.5rem;
+      background: #3b82f6;
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: linear-gradient(to right, blue, green);
+      transform: translateY(-10%) scale(1.1);
+    }
+    #result {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      font-weight: bold;
+      background: white;
+      width: 50%;
+      justify-content: center;
+      align-items: center;
+      border-radius: 15px;
+      transform: translateX(50%);
+    }
+    </style>
+</head>
+<!--The following is the body section-->
+<body>
+    <div class="container">
+        <h1>🚦 Speed Detector</h1>
+        <input id="Speed" type="number" placeholder="Enter car speed (km)">
+        <button onclick="checkspeed()">Check</button>
+        <p id="result"></p>
+    </div>
+
+<!--The following is the js codes-->
+    <script>
+        function checkspeed() {
+            const speed = Number(document.getElementById("Speed").value);
+            let message = "";
+            if (speed < 70){
+                message = "✅ Ok";
+            }else{
+                const points = Math.floor((speed - 70)/ 5);
+                message = points > 12
+                ?"⛔ License suspended" 
+                : `⚠️ Points: ${points}`;
+            }
+            document.getElementById("result").textContent = message;
+        }
+    </script>
+</body>
+</html>

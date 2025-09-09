@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Net Salary Calculator</title>
+  <!--CSS codes-->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(to right, red, #00f2fe);
+    }
+    .container {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+      text-align: center;
+      width: 450px;
+      background: linear-gradient(to left,yellow, red );
+    }
+    h1 {
+      margin-bottom: 1rem;
+      color: #333;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 0.5rem 0;
+      border: 1px solid #ccc;
+      border-radius: 0.5rem;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 0.5rem;
+      background: #3b82f6;
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    button:hover {
+      background: linear-gradient(to right, black, yellow);
+    }
+    table {
+      width: 100%;
+      margin-top: 1.5rem;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background: #3b82f6;
+      color: #fff;
+    }
+    tr:nth-child(even) {
+      background: #f9f9f9;
+    }
+    .highlight {
+      font-weight: bold;
+      background: #e0f7fa;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>💸Net Salary Calculator 💰(KE 2025)📈</h1>
+    <input id="basic" type="number" placeholder="Enter Basic Salary (Ksh)">
+    <input id="benefits" type="number" placeholder="Enter Benefits (Ksh)">
+    <button onclick="calculateNetSalary()">Calculate</button>
+    <div id="result"></div>
+  </div>
+<!--Js codes-->
+  <script>
+    function calculatePAYE(taxable) {
+      if (taxable <= 24000) return taxable * 0.10;
+      if (taxable <= 32333) return (24000 * 0.10) + ((taxable - 24000) * 0.25);
+      if (taxable <= 500000) return (24000 * 0.10) + (8333 * 0.25) + ((taxable - 32333) * 0.30);
+      if (taxable <= 800000) return (24000 * 0.10) + (8333 * 0.25) + (467667 * 0.30) + ((taxable - 500000) * 0.325);
+      return (24000 * 0.10) + (8333 * 0.25) + (467667 * 0.30) + (300000 * 0.325) + ((taxable - 800000) * 0.35);
+    }
+
+    function calculateNSSF(gross) {
+      let tier1 = Math.min(gross, 8000) * 0.06;
+      let tier2 = 0;
+      if (gross > 8000) {
+        tier2 = Math.min(gross - 8000, 64000) * 0.06;
+      }
+      return tier1 + tier2;
+    }
+
+    function calculateNetSalary() {
+      const basic = Number(document.getElementById("basic").value);
+      const benefits = Number(document.getElementById("benefits").value);
+      const gross = basic + benefits;
+
+      // deductions
+      const nssf = calculateNSSF(gross);
+      const shif = gross * 0.0275;
+      const housingLevy = gross * 0.015;
+
+      const taxablePay = gross - nssf - shif - housingLevy;
+      let paye = calculatePAYE(taxablePay);
+
+      const personalRelief = 2400;
+      paye = Math.max(paye - personalRelief, 0);
+
+      const netSalary = gross - (paye + nssf + shif + housingLevy);
+
+      document.getElementById("result").innerHTML = `
+        <table>
+          <tr><th>Item</th><th>Amount (Ksh)</th></tr>
+          <tr><td>Gross Salary</td><td>${gross.toLocaleString()}</td></tr>
+          <tr><td>NSSF</td><td>${nssf.toLocaleString()}</td></tr>
+          <tr><td>SHIF (2.75%)</td><td>${shif.toLocaleString()}</td></tr>
+          <tr><td>Housing Levy (1.5%)</td><td>${housingLevy.toLocaleString()}</td></tr>
+          <tr><td>PAYE (after relief)</td><td>${paye.toLocaleString()}</td></tr>
+          <tr class="highlight"><td>Net Salary</td><td>💰 ${netSalary.toLocaleString()}</td></tr>
+        </table>
+      `;
+    }
+  </script>
+</body>
+</html>

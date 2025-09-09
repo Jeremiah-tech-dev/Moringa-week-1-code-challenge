@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Grade Generator</title>
+    <!--The following is internal css-->
+    <style>
+        body{
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(to right, red, green);
+        }
+        .container{
+            background: #fff;
+            padding: 3px;
+            border-radius: 8px;
+            box-shadow: black;
+            width: 350px;
+            text-align: center;
+            background:linear-gradient(to left, red, green) ;
+        }
+        h1{
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: whitesmoke;
+            font-weight: bolder;
+        }
+        input{
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+        }
+        button{
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 0.5rem;
+            background: #8b5cf6;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+            box-shadow: red;
+        }
+        button:hover{
+            background: linear-gradient(to right,green,black);
+        }
+        #result{
+            margin-top: 1rem;
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #111;
+        }
+    </style>
+</head>
+<!--The following is the body-->
+<body>
+    <div class="container">
+        <h1>🎓 Student Grade Generator</h1>
+        <input id="marks" type="number" placeholder="Enter">
+        <button onclick="generateGrade()">Get Grade</button>
+        <p id="result"></p>
+    </div>
+<!--The following is the js codes-->
+    <script>
+        function generateGrade(){
+            const marks = (document.getElementById("marks").value);
+            let grade = "";
+
+            if (marks > 79) grade = "A";
+            else if (marks >=60) grade = "B";
+            else if (marks >=49) grade = "C";
+            else if (marks >=40) grade = "D";
+            else grade = "E--Pull up your socks";
+
+    document.getElementById("result").textContent = `✅ Grade: ${grade}`;
+        }
+    </script>
+</body>
+</html>
